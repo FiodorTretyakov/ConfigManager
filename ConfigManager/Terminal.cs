@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ConfigManager
 {
@@ -16,14 +17,15 @@ namespace ConfigManager
                 }
                 case "update":
                 {
-                    Bash("sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.1.0.0.ubuntu.14.04-x64.deb");
-                    Bash("sudo dpkg -i ConfigManager.1.0.0.ubuntu.14.04-x64.deb.");
+                    Bash("sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.1.0.0.ubuntu.14.04-x64.deb"); //Download
+                    Bash("sudo apt-get install -f"); //Get missed packages if any
+                    Bash("sudo dpkg -i ConfigManager.1.0.0.ubuntu.14.04-x64.deb");
                     break;
                 }
                 case "apache2":
                 {
-                    Bash("sudo apt-get install apache2 apache2-doc apache2-utils");
-                    Bash("sudo a2dismod mpm_event");
+                    Bash("sudo apt-get install apache2 apache2-doc apache2-utils"); //Install apache
+                    Bash("sudo a2dismod mpm_event"); //On Ubuntu 14.04, the event module is enabled by default. Disable it, and enable the prefork module
                     Bash("sudo a2enmod mpm_prefork");
                     Bash("sudo service apache2 restart");
                     break;
@@ -50,11 +52,22 @@ namespace ConfigManager
 
             Console.WriteLine($"Running the {cmd}");
             process.Start();
-            var output = process.StandardOutput.ReadToEnd();
-            var error = process.StandardError.ReadToEnd();
 
-            process.WaitForExit();
-            Console.WriteLine(string.IsNullOrEmpty(error) ? output : error);
+            Task.WaitAll(Task.Run(() =>
+            {
+                while (!process.StandardOutput.EndOfStream)
+                {
+                    var line = process.StandardOutput.ReadLine();
+                    Console.WriteLine(line);
+                }
+            }), Task.Run(() =>
+            {
+                while (!process.StandardError.EndOfStream)
+                {
+                    var line = process.StandardError.ReadLine();
+                    Console.WriteLine(line);
+                }
+            }));
         }
     }
 }
