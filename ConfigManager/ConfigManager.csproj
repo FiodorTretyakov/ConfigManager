@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <RuntimeIdentifier>ubuntu.14.04-x64</RuntimeIdentifier>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <VersionPrefix>0.0.1</VersionPrefix>
@@ -11,5 +12,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="2.1.1" />
     <PackageReference Include="Packaging.Targets" Version="0.1.48" />
     <DotNetCliToolReference Include="dotnet-deb" Version="0.1.48" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ConfigManager.csproj" Link="ConfigManager.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
