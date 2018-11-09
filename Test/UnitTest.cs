@@ -10,7 +10,7 @@ namespace Test
         [TestMethod]
         public void VersionIsNumeric()
         {
-            var v = new Terminal().GetVersion().Split('.', '-');
+            var v = new Terminal().NextVersion().Split('.', '-');
 
             Assert.AreEqual(v.Length, 4);
             v.AsParallel().ForAll(e => Assert.IsInstanceOfType(int.Parse(e), typeof(int)));

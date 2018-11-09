@@ -18,9 +18,11 @@ namespace ConfigManager
                 }
                 case "update":
                 {
-                    Bash("sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.1.0.0.ubuntu.14.04-x64.deb"); //Download
+                    var v = NextVersion();
+
+                    Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb"); //Download
                     Bash("sudo apt-get install -f"); //Get missed packages if any
-                    Bash($"sudo dpkg -i ConfigManager.{GetVersion()}.ubuntu.14.04-x64.deb");
+                    Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb");
                     break;
                 }
                 case "apache2":
@@ -34,13 +36,22 @@ namespace ConfigManager
             }
         }
 
-        public string GetVersion()
+        public Version GetVersion()
         {
             var doc = new XmlDocument();
             doc.Load("ConfigManager.csproj");
             var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
-            return $"{node.SelectSingleNode("VersionPrefix").InnerText}-{node.SelectSingleNode("VersionSuffix").InnerText}";
+
+            return new Version($"{node.SelectSingleNode("VersionPrefix").InnerText}.{node.SelectSingleNode("VersionSuffix").InnerText}");
         }
+
+        public string NextVersion()
+        {
+            var v = GetVersion();
+
+            return $"{v.Major}.{v.Minor}.{v.Build}-{v.Revision + 1}";
+        }
+
 
         public void Bash(string cmd)
         {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigManager", "ConfigManager\ConfigManager.csproj", "{30001532-8C90-4627-A87A-C9508FE9B952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigManager", "ConfigManager\ConfigManager.csproj", "{30001532-8C90-4627-A87A-C9508FE9B952}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{6B827873-1F24-42BB-9764-A03388489EE9}"
 EndProject
@@ -18,17 +18,27 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{30001532-8C90-4627-A87A-C9508FE9B952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30001532-8C90-4627-A87A-C9508FE9B952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30001532-8C90-4627-A87A-C9508FE9B952}.Debug|x64.ActiveCfg = Debug|x64
+		{30001532-8C90-4627-A87A-C9508FE9B952}.Debug|x64.Build.0 = Debug|x64
 		{30001532-8C90-4627-A87A-C9508FE9B952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30001532-8C90-4627-A87A-C9508FE9B952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30001532-8C90-4627-A87A-C9508FE9B952}.Release|x64.ActiveCfg = Release|x64
+		{30001532-8C90-4627-A87A-C9508FE9B952}.Release|x64.Build.0 = Release|x64
 		{6B827873-1F24-42BB-9764-A03388489EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B827873-1F24-42BB-9764-A03388489EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B827873-1F24-42BB-9764-A03388489EE9}.Debug|x64.ActiveCfg = Debug|x64
+		{6B827873-1F24-42BB-9764-A03388489EE9}.Debug|x64.Build.0 = Debug|x64
 		{6B827873-1F24-42BB-9764-A03388489EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B827873-1F24-42BB-9764-A03388489EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B827873-1F24-42BB-9764-A03388489EE9}.Release|x64.ActiveCfg = Release|x64
+		{6B827873-1F24-42BB-9764-A03388489EE9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
