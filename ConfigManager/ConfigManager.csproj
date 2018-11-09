@@ -6,7 +6,7 @@
     <RuntimeIdentifier>ubuntu.14.04-x64</RuntimeIdentifier>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <VersionPrefix>0.0.1</VersionPrefix>
-    <VersionSuffix>7</VersionSuffix>
+    <VersionSuffix>8</VersionSuffix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
