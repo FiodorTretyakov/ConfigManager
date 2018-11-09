@@ -1,10 +1,19 @@
-﻿namespace ConfigManager
+﻿using System;
+
+namespace ConfigManager
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please, enter the command in next format: ConfigManager {PackageName}");
+            }
+            else
+            {
+                new Terminal().Run(args[0]);
+            }
         }
     }
 }
