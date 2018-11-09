@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using ConfigManager;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,13 +8,12 @@ namespace Test
     public class UnitTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void VersionIsNumeric()
         {
-            var v = new Version(new Terminal().GetVersion());
-            Assert.AreEqual(v.Major, 0);
-            Assert.AreEqual(v.Minor, 0);
-            Assert.AreEqual(v.Build, 1);
-            Assert.AreEqual(v.Revision, 3);
+            var v = new Terminal().GetVersion().Split('.', '-');
+
+            Assert.AreEqual(v.Length, 4);
+            v.AsParallel().ForAll(e => Assert.IsInstanceOfType(int.Parse(e), typeof(int)));
         }
     }
 }

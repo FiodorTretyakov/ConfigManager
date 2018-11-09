@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+using System.Xml;
 
 namespace ConfigManager
 {
     public class Terminal
     {
-        private readonly IConfigurationRoot _config;
-
-        public Terminal()
-        {
-            _config = new ConfigurationBuilder().AddXmlFile("ConfigManager.csproj").Build();
-        }
-
         public void Run(string package)
         {
             switch (package)
@@ -44,8 +36,10 @@ namespace ConfigManager
 
         public string GetVersion()
         {
-            var props = _config.GetSection("Project").GetSection("PropertyGroup").GetChildren().ToList();
-            return $"{props.First(n => n.Key == "VersionPrefix")}-{props.First(n => n.Key == "VersionSuffix")}";
+            var doc = new XmlDocument();
+            doc.Load("ConfigManager.csproj");
+            var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
+            return $"{node.SelectSingleNode("VersionPrefix").InnerText}-{node.SelectSingleNode("VersionSuffix").InnerText}";
         }
 
         public void Bash(string cmd)
