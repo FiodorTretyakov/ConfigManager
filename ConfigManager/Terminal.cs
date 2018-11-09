@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace ConfigManager
 {
     public class Terminal
     {
+        private readonly IConfigurationRoot _config;
+
+        public Terminal()
+        {
+            _config = new ConfigurationBuilder().AddXmlFile("ConfigurationManager/Configuration.csproj").Build();
+        }
+
         public void Run(string package)
         {
             switch (package)
@@ -17,9 +26,11 @@ namespace ConfigManager
                 }
                 case "update":
                 {
+                    var props = _config.GetSection("Project").GetSection("PropertyGroup").GetChildren().ToList();
+
                     Bash("sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.1.0.0.ubuntu.14.04-x64.deb"); //Download
                     Bash("sudo apt-get install -f"); //Get missed packages if any
-                    Bash("sudo dpkg -i ConfigManager.1.0.0.ubuntu.14.04-x64.deb");
+                    Bash($"sudo dpkg -i ConfigManager.{props.First(n => n.Key == "VersionPrefix")}-{props.First(n => n.Key == "VersionSuffix")}.ubuntu.14.04-x64.deb");
                     break;
                 }
                 case "apache2":
