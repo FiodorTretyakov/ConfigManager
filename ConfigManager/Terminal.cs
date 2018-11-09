@@ -26,18 +26,14 @@ namespace ConfigManager
                     }
                 case "apache2":
                     {
-                        Bash("sudo apt-get install apache2 apache2-doc apache2-utils"); //Install apache
-                        Bash("sudo a2dismod mpm_event"); //On Ubuntu 14.04, the event module is enabled by default. Disable it, and enable the prefork module
-                        Bash("sudo a2enmod mpm_prefork");
-                        Bash("sudo service apache2 restart");
+                        Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
+                        Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
+                        Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
+                        Bash("sudo service apache2 restart", "Restarting the Apache...");
                         break;
                     }
                 case "php":
                 {
-                    Bash("sudo apt-get install apache2 apache2-doc apache2-utils"); //Install apache
-                    Bash("sudo a2dismod mpm_event"); //On Ubuntu 14.04, the event module is enabled by default. Disable it, and enable the prefork module
-                    Bash("sudo a2enmod mpm_prefork");
-                    Bash("sudo service apache2 restart");
                     break;
                 }
             }
