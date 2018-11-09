@@ -12,20 +12,27 @@ namespace ConfigManager
             switch (package)
             {
                 case "help":
-                {
-                    Bash("sudo");
-                    break;
-                }
+                    {
+                        break;
+                    }
                 case "update":
-                {
-                    var v = NextVersion();
+                    {
+                        var v = NextVersion();
 
-                    Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb"); //Download
-                    Bash("sudo apt-get install -f"); //Get missed packages if any
-                    Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb");
-                    break;
-                }
+                        Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb", "Downloading the new version...");
+                        Bash("sudo apt-get install -f", "Get missed packages if any...");
+                        Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb", "Installing...");
+                        break;
+                    }
                 case "apache2":
+                    {
+                        Bash("sudo apt-get install apache2 apache2-doc apache2-utils"); //Install apache
+                        Bash("sudo a2dismod mpm_event"); //On Ubuntu 14.04, the event module is enabled by default. Disable it, and enable the prefork module
+                        Bash("sudo a2enmod mpm_prefork");
+                        Bash("sudo service apache2 restart");
+                        break;
+                    }
+                case "php":
                 {
                     Bash("sudo apt-get install apache2 apache2-doc apache2-utils"); //Install apache
                     Bash("sudo a2dismod mpm_event"); //On Ubuntu 14.04, the event module is enabled by default. Disable it, and enable the prefork module
@@ -53,7 +60,7 @@ namespace ConfigManager
         }
 
 
-        public void Bash(string cmd)
+        public void Bash(string cmd, string desc)
         {
             var escapedArgs = cmd.Replace("\"", "\\\"");
 
@@ -70,7 +77,8 @@ namespace ConfigManager
                 }
             };
 
-            Console.WriteLine($"Running the {cmd}");
+            Console.WriteLine(desc);
+
             process.Start();
 
             Task.WaitAll(Task.Run(() =>
