@@ -9,6 +9,17 @@ namespace ConfigManager
         {
             switch (package)
             {
+                case "help":
+                {
+                    Bash("sudo");
+                    break;
+                }
+                case "update":
+                {
+                    Bash("sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.1.0.0.ubuntu.14.04-x64.deb");
+                    Bash("sudo dpkg -i ConfigManager.1.0.0.ubuntu.14.04-x64.deb.");
+                    break;
+                }
                 case "apache2":
                 {
                     Bash("sudo apt-get install apache2 apache2-doc apache2-utils");
@@ -37,6 +48,7 @@ namespace ConfigManager
                 }
             };
 
+            Console.WriteLine($"Running the {cmd}");
             process.Start();
             var output = process.StandardOutput.ReadToEnd();
             var error = process.StandardError.ReadToEnd();
