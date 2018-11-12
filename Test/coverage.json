@@ -1,0 +1,470 @@
+{
+  "ConfigManager.dll": {
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Program.cs": {
+      "ConfigManager.Program/<Main>d__0": {
+        "System.Void ConfigManager.Program/<Main>d__0::MoveNext()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 44,
+              "EndOffset": 110,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Terminal.cs": {
+      "ConfigManager.Terminal": {
+        "System.Version ConfigManager.Terminal::GetCurrentVersion()": {
+          "Lines": {
+            "100": 2,
+            "101": 2,
+            "102": 2,
+            "104": 2,
+            "105": 2
+          },
+          "Branches": []
+        },
+        "System.Version ConfigManager.Terminal::GetVersion(System.Xml.XmlNode)": {
+          "Lines": {
+            "108": 3,
+            "109": 3,
+            "111": 3,
+            "112": 3
+          },
+          "Branches": []
+        },
+        "System.Void ConfigManager.Terminal::Bash(System.String,System.String)": {
+          "Lines": {
+            "129": 0,
+            "130": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "145": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0
+          },
+          "Branches": []
+        },
+        "System.Void ConfigManager.Terminal::.ctor()": {
+          "Lines": {
+            "18": 2,
+            "20": 2,
+            "21": 2,
+            "22": 2,
+            "23": 2,
+            "24": 2,
+            "25": 2,
+            "26": 2,
+            "27": 2
+          },
+          "Branches": []
+        }
+      },
+      "ConfigManager.Terminal/<>c": {
+        "System.Void ConfigManager.Terminal/<>c::<Run>b__6_0(System.Collections.Generic.KeyValuePair`2<System.String,System.String>)": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "ConfigManager.Terminal/<Run>d__6": {
+        "System.Void ConfigManager.Terminal/<Run>d__6::MoveNext()": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "52": 0,
+            "53": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "84": 0,
+            "85": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "94": 0,
+            "95": 0,
+            "97": 0
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 74,
+              "EndOffset": 76,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 74,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 99,
+              "EndOffset": 110,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 48,
+              "EndOffset": 111,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 129,
+              "EndOffset": 131,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 142,
+              "EndOffset": 144,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 155,
+              "EndOffset": 160,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 171,
+              "EndOffset": 176,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 129,
+              "EndOffset": 197,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 231,
+              "EndOffset": 233,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 231,
+              "EndOffset": 256,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 142,
+              "EndOffset": 267,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 293,
+              "EndOffset": 295,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 293,
+              "EndOffset": 365,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 423,
+              "EndOffset": 425,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 423,
+              "EndOffset": 527,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 155,
+              "EndOffset": 545,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 556,
+              "EndOffset": 558,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 70,
+              "Offset": 556,
+              "EndOffset": 562,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 171,
+              "EndOffset": 654,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 187,
+              "EndOffset": 657,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 187,
+              "EndOffset": 687,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "ConfigManager.Terminal/<GetLatestVersion>d__9": {
+        "System.Void ConfigManager.Terminal/<GetLatestVersion>d__9::MoveNext()": {
+          "Lines": {
+            "115": 1,
+            "116": 1,
+            "117": 1,
+            "118": 1,
+            "119": 1,
+            "120": 1,
+            "121": 1,
+            "122": 1,
+            "125": 1
+          },
+          "Branches": [
+            {
+              "Line": 115,
+              "Offset": 14,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 116,
+              "Offset": 60,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 116,
+              "Offset": 60,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 115,
+              "Offset": 14,
+              "EndOffset": 161,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 116,
+              "Offset": 164,
+              "EndOffset": 170,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 118,
+              "Offset": 201,
+              "EndOffset": 272,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "ConfigManager.Terminal/<>c__DisplayClass10_0": {
+        "System.Void ConfigManager.Terminal/<>c__DisplayClass10_0::<Bash>b__0()": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 151,
+              "Offset": 50,
+              "EndOffset": 3,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 151,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void ConfigManager.Terminal/<>c__DisplayClass10_0::<Bash>b__1()": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 158,
+              "Offset": 50,
+              "EndOffset": 3,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 158,
+              "Offset": 50,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

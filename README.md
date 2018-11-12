@@ -1,14 +1,14 @@
 # ConfigManager
 Simple Chef implementation.
 
-
-code coverage
-
 Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
 
 2 libs ???
 
-Your tool must provide an abstraction that allows installing and removing Debian packages
+install custom package and remove custom package as apt get
+
+check if exists?
+delete package
 
 add configmanager to environment
 

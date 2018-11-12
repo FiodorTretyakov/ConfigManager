@@ -6,7 +6,7 @@ namespace ConfigManager
     {
         public static async Task Main(string[] args)
         {
-            await new Terminal().Run(args.Length > 0 ? args[0] : string.Empty);
+            await new Terminal().Run(args);
         }
     }
 }

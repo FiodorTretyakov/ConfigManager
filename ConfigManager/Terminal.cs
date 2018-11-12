@@ -13,6 +13,7 @@ namespace ConfigManager
         private const string BaseUrl = "https://github.com/FiodorTretyakov/ConfigManager/raw/master/";
         private const string VersionFileName = "ConfigManager.csproj";
         private const string Platform = "ubuntu.14.04-x64";
+        private const string DeleteCmd = "delete";
 
         private readonly HttpClient _client = new HttpClient();
 
@@ -25,8 +26,20 @@ namespace ConfigManager
             {"version", "Displays the current version of the package." }
         };
 
-        public async Task Run(string package)
+        public async Task Run(string[] args)
         {
+            var package = string.Empty;
+            var toRemove = false;
+
+            if (args.Length > 0)
+            {
+                package = args[0];
+
+                if (args.Length > 1 && args[1] == DeleteCmd)
+                {
+                    toRemove = true;
+                }
+            }
             switch (package)
             {
                 case "help":
@@ -54,10 +67,17 @@ namespace ConfigManager
                     }
                 case "apache2":
                     {
-                        Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
-                        Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
-                        Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
-                        Bash("sudo service apache2 restart", "Restarting the Apache...");
+                        if (toRemove)
+                        {
+
+                        }
+                        else
+                        {
+                            Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
+                            Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
+                            Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
+                            Bash("sudo service apache2 restart", "Restarting the Apache...");
+                        }
                         break;
                     }
                 case "php":

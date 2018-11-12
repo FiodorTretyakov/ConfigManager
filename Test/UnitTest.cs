@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml;
 using ConfigManager;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
