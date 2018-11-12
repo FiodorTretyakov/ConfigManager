@@ -2,10 +2,7 @@
 Simple Chef implementation.
 
 
-add help command
-add version command
-
-if no new version - show that
+code coverage
 
 Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
 

@@ -11,13 +11,19 @@ namespace ConfigManager
     public class Terminal
     {
         private const string BaseUrl = "https://github.com/FiodorTretyakov/ConfigManager/raw/master/";
-        public const string VersionFileName = "ConfigManager.csproj";
+        private const string VersionFileName = "ConfigManager.csproj";
+        private const string Platform = "ubuntu.14.04-x64";
 
         private readonly HttpClient _client = new HttpClient();
 
-        private readonly Dictionary<string, string> _commands = new Dictionary<string, string> {
-        { "help", "Shows the list of commands, their descriptions and syntax."}, {"update", "Updates the software to the latest version."},
-        { "apache2", "Installs the Apache server."}, {"php", "Install the PHP runtime with the simplest Hello-World application."}};
+        private readonly Dictionary<string, string> _commands = new Dictionary<string, string>
+        {
+            { "help", "Shows the list of commands, their descriptions and syntax."},
+            { "update", "Updates the software to the latest version."},
+            {"apache2", "Installs the Apache server."},
+            { "php", "Install the PHP runtime with the simplest Hello-World application."},
+            {"version", "Displays the current version of the package." }
+        };
 
         public async Task Run(string package)
         {
@@ -25,6 +31,7 @@ namespace ConfigManager
             {
                 case "help":
                     {
+                        Console.WriteLine("There are list of possible commands with descriptions.");
                         _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
                         break;
                     }
@@ -32,14 +39,11 @@ namespace ConfigManager
                     {
                         var v = await GetLatestVersion();
 
-                        var doc = new XmlDocument();
-                        doc.Load(VersionFileName);
-
-                        if (v > GetVersion(doc))
+                        if (v > GetCurrentVersion())
                         {
-                            Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb", "Downloading the new version...");
+                            Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.{Platform}.deb", "Downloading the new version...");
                             Bash("sudo apt-get install -f", "Get missed packages if any...");
-                            Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb", "Installing...");
+                            Bash($"sudo dpkg -i ConfigManager.{v}.{Platform}.deb", "Installing...");
                         }
                         else
                         {
@@ -60,10 +64,27 @@ namespace ConfigManager
                     {
                         break;
                     }
+                case "version":
+                    {
+                        Console.WriteLine($"Current Version is: {GetCurrentVersion()}");
+                        break;
+                    }
+
+                default:
+                    Console.WriteLine("Please, enter the command in next format: ConfigManager {PackageName}. For help, please, run ConfigManager help.");
+                    break;
             }
         }
 
-        public Version GetVersion(XmlDocument doc)
+        public Version GetCurrentVersion()
+        {
+            var doc = new XmlDocument();
+            doc.Load(VersionFileName);
+
+            return GetVersion(doc);
+        }
+
+        private static Version GetVersion(XmlNode doc)
         {
             var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
 
