@@ -104,6 +104,10 @@ namespace ConfigManager
                         {
                             Console.WriteLine("You missed the argument - which package check the status. To see the list, please, run help command.");
                         }
+                        else
+                        {
+                            Bash($"apt-cache search --names-only '^{packageName}-.*'", "Searching the package...");
+                        }
                         break;
                     }
                 case "version":
