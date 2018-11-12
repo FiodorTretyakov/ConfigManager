@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -7,21 +10,42 @@ namespace ConfigManager
 {
     public class Terminal
     {
-        public void Run(string package)
+        private const string BaseUrl = "https://github.com/FiodorTretyakov/ConfigManager/raw/master/";
+        public const string VersionFileName = "ConfigManager.csproj";
+
+        private readonly HttpClient _client = new HttpClient();
+
+        private readonly Dictionary<string, string> _commands = new Dictionary<string, string> {
+        { "help", "Shows the list of commands, their descriptions and syntax."}, {"update", "Updates the software to the latest version."},
+        { "apache2", "Installs the Apache server."}, {"php", "Install the PHP runtime with the simplest Hello-World application."}};
+
+        public async Task Run(string package)
         {
             switch (package)
             {
                 case "help":
                     {
+                        _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
                         break;
                     }
                 case "update":
                     {
-                        var v = NextVersion();
+                        var v = await GetLatestVersion();
 
-                        Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb", "Downloading the new version...");
-                        Bash("sudo apt-get install -f", "Get missed packages if any...");
-                        Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb", "Installing...");
+                        var doc = new XmlDocument();
+                        doc.Load(VersionFileName);
+
+                        if (v > GetVersion(doc))
+                        {
+                            Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.ubuntu.14.04-x64.deb", "Downloading the new version...");
+                            Bash("sudo apt-get install -f", "Get missed packages if any...");
+                            Bash($"sudo dpkg -i ConfigManager.{v}.ubuntu.14.04-x64.deb", "Installing...");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are using the latest version.");
+                        }
+
                         break;
                     }
                 case "apache2":
@@ -33,26 +57,30 @@ namespace ConfigManager
                         break;
                     }
                 case "php":
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
             }
         }
 
-        public Version GetVersion()
+        public Version GetVersion(XmlDocument doc)
         {
-            var doc = new XmlDocument();
-            doc.Load("ConfigManager.csproj");
             var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
 
             return new Version($"{node.SelectSingleNode("VersionPrefix").InnerText}.{node.SelectSingleNode("VersionSuffix").InnerText}");
         }
 
-        public string NextVersion()
+        public async Task<Version> GetLatestVersion()
         {
-            var v = GetVersion();
-
-            return $"{v.Major}.{v.Minor}.{v.Build}-{v.Revision + 1}";
+            using (var response = await _client.GetAsync($"{BaseUrl}/ConfigManager/ConfigManager.csproj"))
+            {
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                {
+                    var doc = new XmlDocument();
+                    doc.Load(stream);
+                    return GetVersion(doc);
+                }
+            }
         }
 
 
@@ -69,7 +97,7 @@ namespace ConfigManager
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
-                    CreateNoWindow = true,
+                    CreateNoWindow = true
                 }
             };
 

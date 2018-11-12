@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace ConfigManager
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             if (args.Length == 0)
             {
@@ -12,7 +13,7 @@ namespace ConfigManager
             }
             else
             {
-                new Terminal().Run(args[0]);
+                await new Terminal().Run(args[0]);
             }
         }
     }
