@@ -11,26 +11,30 @@ namespace ConfigManager
     public class Terminal
     {
         private const string BaseUrl = "https://github.com/FiodorTretyakov/ConfigManager/raw/master/";
-        private const string VersionFileName = "ConfigManager.csproj";
+        private const string UtilName = "ConfigManager";
         private const string Platform = "ubuntu.14.04-x64";
+
+        private readonly string _versionFileName = $"{UtilName}.csproj";
+        private readonly string _commandFailed =
+            $"Please, run the command in format: ./{UtilName} command-name arguments.";
 
         private readonly HttpClient _client = new HttpClient();
 
         private readonly Dictionary<string, string> _commands = new Dictionary<string, string>
         {
-            { "help", "Shows the list of commands, their descriptions and syntax."},
-            { "update", "Updates the software to the latest version."},
-            {"install", "Adds and configures the package. Usage ConfigManager install {package-name}"},
-            { "remove", "Removes the package if it exists. Usage ConfigManager remove {package-name}"},
-            { "exists", "Checks if the package exists. Usage ConfigManager exists {package-name}"},
-            {"version", "Displays the current version of the package." },
-            {"system-update", "Updates the system." }
+            { "help", "Show the list of commands, their descriptions and syntax." },
+            { "update", "Update the software to the latest version." },
+            { "install", $"Add and configures the package. Usage {UtilName} install package-name." },
+            { "remove", $"Remove the package if it exists. Usage {UtilName} remove package-name." },
+            { "exists", $"Check if the package exists. Usage {UtilName} exists package-name." },
+            { "version", "Display the current version of the package." },
+            { "system-update", "Update the system." }
         };
 
         private readonly Dictionary<string, string> _packages = new Dictionary<string, string>
         {
-            {"apache2", "Installs the Apache server."},
-            {"php", "Install the PHP runtime with the simplest Hello-World application."}
+            {"apache2", "Install the Apache server."},
+            {"php", "Install the PHP runtime with a simple Hello-World application."}
         };
 
         public async Task Run(string[] args)
@@ -56,21 +60,23 @@ namespace ConfigManager
                         _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
                         Console.WriteLine("List of packages:");
                         _packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
+                        Console.WriteLine(_commandFailed);
                         break;
                     }
                 case "update":
                     {
                         var v = await GetLatestVersion();
 
+                        Console.WriteLine("Checking if the new version available...");
                         if (v > GetCurrentVersion())
                         {
                             Bash($"sudo wget https://github.com/FiodorTretyakov/ConfigManager/raw/master/builds/ConfigManager.{v}.{Platform}.deb", "Downloading the new version...");
-                            Bash("sudo apt-get install -f", "Get missed packages if any...");
+                            Bash("sudo apt-get install -f", "Getting missed packages if any...");
                             Bash($"sudo dpkg -i ConfigManager.{v}.{Platform}.deb", "Installing...");
                         }
                         else
                         {
-                            Console.WriteLine("You are using the latest version.");
+                            Console.WriteLine("You are using the latest version already.");
                         }
 
                         break;
@@ -129,8 +135,7 @@ namespace ConfigManager
 
                 default:
                     {
-                        Console.WriteLine(
-                            "Please, enter the command in next format: ConfigManager {PackageName}. For help, please, run ConfigManager help.");
+                        Console.WriteLine($"Command not found. {_commandFailed} To see all possible commands, please, run ./ConfigManager help.");
                         break;
                     }
             }
@@ -139,7 +144,7 @@ namespace ConfigManager
         public Version GetCurrentVersion()
         {
             var doc = new XmlDocument();
-            doc.Load(VersionFileName);
+            doc.Load(_versionFileName);
 
             return GetVersion(doc);
         }
