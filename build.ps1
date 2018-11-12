@@ -14,5 +14,5 @@ dotnet test "Test.csproj" /p:CollectCoverage=true
 
 Set-Location "..\$projectName"
 dotnet deb -c Release -r $runtime -f netcoreapp2.1
-Copy-Item ".\bin\Release\$runtime\$projectName.$prefix-$suffix.$runtime.deb" "..\builds\"
+Copy-Item ".\bin\Release\$runtime\$projectName.$prefix-$suffix.$runtime.deb" "..\builds\$projectName.$prefix.$suffix.$runtime.deb"
 Set-Location ..
