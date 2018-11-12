@@ -1,14 +1,9 @@
 # ConfigManager
 Simple Chef implementation.
 
-install custom package and remove custom package as apt get
-
 check if exists?
-delete package
 
 Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
-
-add configmanager to environment
 
 add ask to update the system?
 add as k to install apache?

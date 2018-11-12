@@ -13,7 +13,6 @@ namespace ConfigManager
         private const string BaseUrl = "https://github.com/FiodorTretyakov/ConfigManager/raw/master/";
         private const string VersionFileName = "ConfigManager.csproj";
         private const string Platform = "ubuntu.14.04-x64";
-        private const string DeleteCmd = "delete";
 
         private readonly HttpClient _client = new HttpClient();
 
@@ -21,31 +20,42 @@ namespace ConfigManager
         {
             { "help", "Shows the list of commands, their descriptions and syntax."},
             { "update", "Updates the software to the latest version."},
+            {"install", "Adds and configures the package. Usage ConfigManager install {package-name}"},
+            { "remove", "Removes the package if it exists. Usage ConfigManager remove {package-name}"},
+            { "exists", "Checks if the package exists. Usage ConfigManager exists {package-name}"},
+            {"version", "Displays the current version of the package." },
+            {"system-update", "Updates the system." }
+        };
+
+        private readonly Dictionary<string, string> _packages = new Dictionary<string, string>
+        {
             {"apache2", "Installs the Apache server."},
-            { "php", "Install the PHP runtime with the simplest Hello-World application."},
-            {"version", "Displays the current version of the package." }
+            {"php", "Install the PHP runtime with the simplest Hello-World application."}
         };
 
         public async Task Run(string[] args)
         {
-            var package = string.Empty;
-            var toRemove = false;
+            var command = string.Empty;
+            string packageName = null;
 
             if (args.Length > 0)
             {
-                package = args[0];
+                command = args[0];
 
-                if (args.Length > 1 && args[1] == DeleteCmd)
+                if (args.Length > 1)
                 {
-                    toRemove = true;
+                    packageName = args[1];
                 }
             }
-            switch (package)
+
+            switch (command)
             {
                 case "help":
                     {
                         Console.WriteLine("There are list of possible commands with descriptions.");
                         _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
+                        Console.WriteLine("List of packages:");
+                        _packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
                         break;
                     }
                 case "update":
@@ -65,23 +75,35 @@ namespace ConfigManager
 
                         break;
                     }
-                case "apache2":
+                case "install":
                     {
-                        if (toRemove)
+                        if (string.IsNullOrWhiteSpace(packageName))
                         {
-
+                            Console.WriteLine("You missed the argument - which package to install. To see the list, please, run help command.");
                         }
                         else
                         {
-                            Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
-                            Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
-                            Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
-                            Bash("sudo service apache2 restart", "Restarting the Apache...");
+                            //Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
+                            //Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
+                            //Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
+                            //Bash("sudo service apache2 restart", "Restarting the Apache...");
                         }
                         break;
                     }
-                case "php":
+                case "delete":
                     {
+                        if (string.IsNullOrWhiteSpace(packageName))
+                        {
+                            Console.WriteLine("You missed the argument - which package to delete. To see the list, please, run help command.");
+                        }
+                        break;
+                    }
+                case "exists":
+                    {
+                        if (string.IsNullOrWhiteSpace(packageName))
+                        {
+                            Console.WriteLine("You missed the argument - which package check the status. To see the list, please, run help command.");
+                        }
                         break;
                     }
                 case "version":
@@ -89,10 +111,18 @@ namespace ConfigManager
                         Console.WriteLine($"Current Version is: {GetCurrentVersion()}");
                         break;
                     }
+                case "system-update":
+                    {
+                        Bash("sudo apt-get update && sudo apt-get upgrade", "Updating the system...");
+                        break;
+                    }
 
                 default:
-                    Console.WriteLine("Please, enter the command in next format: ConfigManager {PackageName}. For help, please, run ConfigManager help.");
-                    break;
+                    {
+                        Console.WriteLine(
+                            "Please, enter the command in next format: ConfigManager {PackageName}. For help, please, run ConfigManager help.");
+                        break;
+                    }
             }
         }
 
