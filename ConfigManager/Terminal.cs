@@ -83,6 +83,12 @@ namespace ConfigManager
                         }
                         else
                         {
+                            Console.WriteLine("It is recommended to update your system before package installation. Do you wanna do it?");
+                            if (Console.ReadLine() == "Y")
+                            {
+                                await Run(new[] { "system-update", string.Empty });
+                            }
+
                             //Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
                             //Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
                             //Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
