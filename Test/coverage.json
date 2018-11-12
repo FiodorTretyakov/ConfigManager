@@ -33,63 +33,64 @@
       "ConfigManager.Terminal": {
         "System.Version ConfigManager.Terminal::GetCurrentVersion()": {
           "Lines": {
-            "100": 2,
-            "101": 2,
-            "102": 2,
-            "104": 2,
-            "105": 2
+            "140": 2,
+            "141": 2,
+            "142": 2,
+            "144": 2,
+            "145": 2
           },
           "Branches": []
         },
         "System.Version ConfigManager.Terminal::GetVersion(System.Xml.XmlNode)": {
           "Lines": {
-            "108": 3,
-            "109": 3,
-            "111": 3,
-            "112": 3
+            "148": 3,
+            "149": 3,
+            "151": 3,
+            "152": 3
           },
           "Branches": []
         },
         "System.Void ConfigManager.Terminal::Bash(System.String,System.String)": {
           "Lines": {
-            "129": 0,
-            "130": 0,
-            "132": 0,
-            "133": 0,
-            "134": 0,
-            "135": 0,
-            "136": 0,
-            "137": 0,
-            "138": 0,
-            "139": 0,
-            "140": 0,
-            "141": 0,
-            "142": 0,
-            "143": 0,
-            "145": 0,
-            "147": 0,
-            "149": 0,
-            "150": 0,
-            "151": 0,
-            "152": 0,
-            "153": 0,
-            "154": 0,
-            "155": 0,
-            "156": 0,
-            "157": 0,
-            "158": 0,
-            "159": 0,
-            "160": 0,
-            "161": 0,
-            "162": 0,
-            "163": 0,
-            "164": 0
+            "169": 0,
+            "170": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "185": 0,
+            "187": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "202": 0,
+            "203": 0,
+            "204": 0
           },
           "Branches": []
         },
         "System.Void ConfigManager.Terminal::.ctor()": {
           "Lines": {
-            "18": 2,
+            "17": 2,
+            "19": 2,
             "20": 2,
             "21": 2,
             "22": 2,
@@ -97,7 +98,13 @@
             "24": 2,
             "25": 2,
             "26": 2,
-            "27": 2
+            "27": 2,
+            "28": 2,
+            "30": 2,
+            "31": 2,
+            "32": 2,
+            "33": 2,
+            "34": 2
           },
           "Branches": []
         }
@@ -105,7 +112,13 @@
       "ConfigManager.Terminal/<>c": {
         "System.Void ConfigManager.Terminal/<>c::<Run>b__6_0(System.Collections.Generic.KeyValuePair`2<System.String,System.String>)": {
           "Lines": {
-            "48": 0
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Void ConfigManager.Terminal/<>c::<Run>b__6_1(System.Collections.Generic.KeyValuePair`2<System.String,System.String>)": {
+          "Lines": {
+            "58": 0
           },
           "Branches": []
         }
@@ -113,244 +126,521 @@
       "ConfigManager.Terminal/<Run>d__6": {
         "System.Void ConfigManager.Terminal/<Run>d__6::MoveNext()": {
           "Lines": {
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "34": 0,
-            "35": 0,
-            "36": 0,
+            "37": 0,
             "38": 0,
             "39": 0,
-            "40": 0,
             "41": 0,
             "42": 0,
             "43": 0,
+            "45": 0,
             "46": 0,
             "47": 0,
+            "48": 0,
             "49": 0,
-            "52": 0,
-            "53": 0,
+            "51": 0,
+            "54": 0,
             "55": 0,
-            "56": 0,
             "57": 0,
-            "58": 0,
             "59": 0,
-            "60": 0,
             "62": 0,
             "63": 0,
-            "64": 0,
+            "65": 0,
             "66": 0,
+            "67": 0,
+            "68": 0,
             "69": 0,
             "70": 0,
-            "71": 0,
+            "72": 0,
             "73": 0,
-            "75": 0,
+            "74": 0,
             "76": 0,
-            "77": 0,
-            "78": 0,
             "79": 0,
             "80": 0,
             "81": 0,
-            "84": 0,
+            "82": 0,
+            "83": 0,
             "85": 0,
+            "86": 0,
+            "87": 0,
             "88": 0,
             "89": 0,
             "90": 0,
-            "94": 0,
-            "95": 0,
-            "97": 0
+            "96": 0,
+            "97": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "137": 0
           },
           "Branches": [
             {
-              "Line": 34,
-              "Offset": 48,
-              "EndOffset": 50,
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 28,
               "Path": 0,
               "Ordinal": 0,
               "Hits": 0
             },
             {
-              "Line": 38,
-              "Offset": 74,
-              "EndOffset": 76,
+              "Line": 41,
+              "Offset": 59,
+              "EndOffset": 61,
               "Path": 0,
               "Ordinal": 2,
               "Hits": 0
             },
             {
-              "Line": 38,
-              "Offset": 74,
-              "EndOffset": 96,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
-            },
-            {
-              "Line": 38,
-              "Offset": 99,
-              "EndOffset": 101,
+              "Line": 45,
+              "Offset": 89,
+              "EndOffset": 91,
               "Path": 0,
               "Ordinal": 4,
               "Hits": 0
             },
             {
-              "Line": 38,
-              "Offset": 99,
-              "EndOffset": 110,
+              "Line": 45,
+              "Offset": 89,
+              "EndOffset": 107,
               "Path": 1,
               "Ordinal": 5,
               "Hits": 0
             },
             {
-              "Line": 34,
-              "Offset": 48,
-              "EndOffset": 111,
+              "Line": 41,
+              "Offset": 59,
+              "EndOffset": 108,
               "Path": 1,
-              "Ordinal": 1,
+              "Ordinal": 3,
               "Hits": 0
             },
             {
-              "Line": 43,
-              "Offset": 129,
-              "EndOffset": 131,
+              "Line": 51,
+              "Offset": 130,
+              "EndOffset": 132,
               "Path": 0,
               "Ordinal": 6,
               "Hits": 0
             },
             {
-              "Line": 43,
-              "Offset": 142,
-              "EndOffset": 144,
+              "Line": 51,
+              "Offset": 139,
+              "EndOffset": 143,
               "Path": 0,
               "Ordinal": 8,
               "Hits": 0
             },
             {
-              "Line": 43,
-              "Offset": 155,
-              "EndOffset": 160,
+              "Line": 51,
+              "Offset": 150,
+              "EndOffset": 157,
               "Path": 0,
               "Ordinal": 10,
               "Hits": 0
             },
             {
-              "Line": 43,
-              "Offset": 171,
-              "EndOffset": 176,
-              "Path": 0,
-              "Ordinal": 12,
-              "Hits": 0
-            },
-            {
-              "Line": 43,
-              "Offset": 129,
-              "EndOffset": 197,
+              "Line": 51,
+              "Offset": 130,
+              "EndOffset": 171,
               "Path": 1,
               "Ordinal": 7,
               "Hits": 0
             },
             {
-              "Line": 48,
-              "Offset": 231,
-              "EndOffset": 233,
+              "Line": 51,
+              "Offset": 178,
+              "EndOffset": 180,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 187,
+              "EndOffset": 194,
               "Path": 0,
               "Ordinal": 16,
               "Hits": 0
             },
             {
-              "Line": 48,
-              "Offset": 231,
-              "EndOffset": 256,
-              "Path": 1,
-              "Ordinal": 17,
-              "Hits": 0
-            },
-            {
-              "Line": 43,
-              "Offset": 142,
-              "EndOffset": 267,
-              "Path": 1,
-              "Ordinal": 9,
-              "Hits": 0
-            },
-            {
-              "Line": 53,
-              "Offset": 293,
-              "EndOffset": 295,
-              "Path": 0,
-              "Ordinal": 18,
-              "Hits": 0
-            },
-            {
-              "Line": 53,
-              "Offset": 293,
-              "EndOffset": 365,
-              "Path": 1,
-              "Ordinal": 19,
-              "Hits": 0
-            },
-            {
-              "Line": 55,
-              "Offset": 423,
-              "EndOffset": 425,
-              "Path": 0,
-              "Ordinal": 20,
-              "Hits": 0
-            },
-            {
-              "Line": 55,
-              "Offset": 423,
-              "EndOffset": 527,
-              "Path": 1,
-              "Ordinal": 21,
-              "Hits": 0
-            },
-            {
-              "Line": 43,
-              "Offset": 155,
-              "EndOffset": 545,
-              "Path": 1,
-              "Ordinal": 11,
-              "Hits": 0
-            },
-            {
-              "Line": 70,
-              "Offset": 556,
-              "EndOffset": 558,
-              "Path": 0,
-              "Ordinal": 22,
-              "Hits": 0
-            },
-            {
-              "Line": 70,
-              "Offset": 556,
-              "EndOffset": 562,
-              "Path": 1,
-              "Ordinal": 23,
-              "Hits": 0
-            },
-            {
-              "Line": 43,
-              "Offset": 171,
-              "EndOffset": 654,
-              "Path": 1,
-              "Ordinal": 13,
-              "Hits": 0
-            },
-            {
-              "Line": 43,
-              "Offset": 187,
-              "EndOffset": 657,
+              "Line": 51,
+              "Offset": 178,
+              "EndOffset": 211,
               "Path": 1,
               "Ordinal": 15,
               "Hits": 0
             },
             {
-              "Line": 43,
-              "Offset": 187,
-              "EndOffset": 687,
+              "Line": 51,
+              "Offset": 218,
+              "EndOffset": 222,
               "Path": 0,
-              "Ordinal": 14,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 164,
+              "EndOffset": 236,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 139,
+              "EndOffset": 257,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 229,
+              "EndOffset": 278,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 218,
+              "EndOffset": 299,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 187,
+              "EndOffset": 320,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 201,
+              "EndOffset": 341,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 150,
+              "EndOffset": 362,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 247,
+              "EndOffset": 383,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 417,
+              "EndOffset": 419,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 417,
+              "EndOffset": 442,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 481,
+              "EndOffset": 483,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 481,
+              "EndOffset": 506,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 268,
+              "EndOffset": 517,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 543,
+              "EndOffset": 545,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 0
+            },
+            {
+              "Line": 63,
+              "Offset": 543,
+              "EndOffset": 615,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 673,
+              "EndOffset": 675,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 673,
+              "EndOffset": 777,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 289,
+              "EndOffset": 795,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 811,
+              "EndOffset": 813,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 811,
+              "EndOffset": 831,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 862,
+              "EndOffset": 867,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 915,
+              "EndOffset": 917,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 958,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 915,
+              "EndOffset": 987,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 862,
+              "EndOffset": 996,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 310,
+              "EndOffset": 1002,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1018,
+              "EndOffset": 1020,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 331,
+              "EndOffset": 1038,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 109,
+              "Offset": 1054,
+              "EndOffset": 1056,
+              "Path": 0,
+              "Ordinal": 54,
+              "Hits": 0
+            },
+            {
+              "Line": 109,
+              "Offset": 1054,
+              "EndOffset": 1071,
+              "Path": 1,
+              "Ordinal": 55,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 352,
+              "EndOffset": 1113,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 373,
+              "EndOffset": 1143,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 164,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 201,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 229,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 247,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 268,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 289,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 310,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 331,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 352,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 373,
+              "EndOffset": 1168,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1018,
+              "EndOffset": 1182,
+              "Path": 1,
+              "Ordinal": 53,
               "Hits": 0
             }
           ]
@@ -359,19 +649,19 @@
       "ConfigManager.Terminal/<GetLatestVersion>d__9": {
         "System.Void ConfigManager.Terminal/<GetLatestVersion>d__9::MoveNext()": {
           "Lines": {
-            "115": 1,
-            "116": 1,
-            "117": 1,
-            "118": 1,
-            "119": 1,
-            "120": 1,
-            "121": 1,
-            "122": 1,
-            "125": 1
+            "155": 1,
+            "156": 1,
+            "157": 1,
+            "158": 1,
+            "159": 1,
+            "160": 1,
+            "161": 1,
+            "162": 1,
+            "165": 1
           },
           "Branches": [
             {
-              "Line": 115,
+              "Line": 155,
               "Offset": 14,
               "EndOffset": 25,
               "Path": 0,
@@ -379,7 +669,7 @@
               "Hits": 1
             },
             {
-              "Line": 116,
+              "Line": 156,
               "Offset": 60,
               "EndOffset": 62,
               "Path": 0,
@@ -387,7 +677,7 @@
               "Hits": 1
             },
             {
-              "Line": 116,
+              "Line": 156,
               "Offset": 60,
               "EndOffset": 129,
               "Path": 1,
@@ -395,7 +685,7 @@
               "Hits": 1
             },
             {
-              "Line": 115,
+              "Line": 155,
               "Offset": 14,
               "EndOffset": 161,
               "Path": 1,
@@ -403,7 +693,7 @@
               "Hits": 1
             },
             {
-              "Line": 116,
+              "Line": 156,
               "Offset": 164,
               "EndOffset": 170,
               "Path": 0,
@@ -411,7 +701,7 @@
               "Hits": 1
             },
             {
-              "Line": 118,
+              "Line": 158,
               "Offset": 201,
               "EndOffset": 272,
               "Path": 1,
@@ -426,7 +716,7 @@
           "Lines": {},
           "Branches": [
             {
-              "Line": 151,
+              "Line": 191,
               "Offset": 50,
               "EndOffset": 3,
               "Path": 1,
@@ -434,7 +724,7 @@
               "Hits": 0
             },
             {
-              "Line": 151,
+              "Line": 191,
               "Offset": 50,
               "EndOffset": 52,
               "Path": 0,
@@ -447,7 +737,7 @@
           "Lines": {},
           "Branches": [
             {
-              "Line": 158,
+              "Line": 198,
               "Offset": 50,
               "EndOffset": 3,
               "Path": 1,
@@ -455,11 +745,60 @@
               "Hits": 0
             },
             {
-              "Line": 158,
+              "Line": 198,
               "Offset": 50,
               "EndOffset": 52,
               "Path": 0,
               "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Package\\Base.cs": {
+      "ConfigManager.Package.Base/<Run>d__0": {
+        "System.Void ConfigManager.Package.Base/<Run>d__0::MoveNext()": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "16": 0
+          },
+          "Branches": [
+            {
+              "Line": 11,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 92,
+              "EndOffset": 158,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 43,
+              "EndOffset": 167,
+              "Path": 1,
+              "Ordinal": 1,
               "Hits": 0
             }
           ]

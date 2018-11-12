@@ -22,7 +22,7 @@ namespace Test
         [TestMethod]
         public async Task VersionIsLatest()
         {
-            Assert.AreEqual(_terminal.GetCurrentVersion(), await _terminal.GetLatestVersion());
+            Assert.IsTrue(_terminal.GetCurrentVersion() > await _terminal.GetLatestVersion());
         }
     }
 }
