@@ -89,7 +89,7 @@ namespace ConfigManager
                         }
                         else
                         {
-                            Console.WriteLine("It is recommended to update your system before package installation. Do you wanna do it?");
+                            Console.WriteLine("It is strictly recommended to update your system before package installation. Do you wanna do it now?");
                             if (Console.ReadLine() == "Y")
                             {
                                 await Run(new[] { "system-update", string.Empty });
@@ -118,7 +118,7 @@ namespace ConfigManager
                         }
                         else
                         {
-                            Bash($"apt-cache search --names-only '^{packageName}-.*'", "Searching the package...");
+                            Bash($"apt-cache search --names-only '^{packageName}.*'", "Searching the package...");
                         }
                         break;
                     }
