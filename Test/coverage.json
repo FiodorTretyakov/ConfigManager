@@ -1,6 +1,6 @@
 {
   "ConfigManager.dll": {
-    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Program.cs": {
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\COnfigManager\\ConfigManager\\Program.cs": {
       "ConfigManager.Program/<Main>d__0": {
         "System.Void ConfigManager.Program/<Main>d__0::MoveNext()": {
           "Lines": {
@@ -29,7 +29,7 @@
         }
       }
     },
-    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Terminal.cs": {
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\COnfigManager\\ConfigManager\\Terminal.cs": {
       "ConfigManager.Terminal": {
         "System.Version ConfigManager.Terminal::GetCurrentVersion()": {
           "Lines": {
@@ -756,7 +756,7 @@
         }
       }
     },
-    "C:\\Users\\fiodor.tretyakov\\code\\playground\\ConfigManager\\ConfigManager\\Package\\Base.cs": {
+    "C:\\Users\\fiodor.tretyakov\\code\\playground\\COnfigManager\\ConfigManager\\Package\\Base.cs": {
       "ConfigManager.Package.Base/<Run>d__0": {
         "System.Void ConfigManager.Package.Base/<Run>d__0::MoveNext()": {
           "Lines": {
