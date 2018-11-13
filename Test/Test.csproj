@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="coverage.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\ConfigManager\ConfigManager.csproj" Link="ConfigManager.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
