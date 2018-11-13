@@ -5,8 +5,8 @@
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <RuntimeIdentifier>ubuntu.14.04-x64</RuntimeIdentifier>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <VersionPrefix>0.0.1</VersionPrefix>
-    <VersionSuffix>15</VersionSuffix>
+    <VersionPrefix>0.0.1.15</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
     <Platforms>AnyCPU;x64</Platforms>
     <Authors>Fiodor Tretyakov</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
