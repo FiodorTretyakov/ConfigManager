@@ -15,6 +15,7 @@ namespace Test
         {
             var v = _terminal.GetCurrentVersion().ToString().Split('.', '-');
 
+            Assert.IsTrue(_terminal.Packages.Count > 1);
             Assert.AreEqual(v.Length, 4);
             v.AsParallel().ForAll(e => Assert.IsInstanceOfType(int.Parse(e), typeof(int)));
         }
@@ -22,7 +23,7 @@ namespace Test
         [TestMethod]
         public async Task VersionIsLatest()
         {
-            Assert.IsTrue(_terminal.GetCurrentVersion() > await _terminal.GetLatestVersion());
+            Assert.IsTrue(_terminal.GetCurrentVersion() >= await _terminal.GetLatestVersion());
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
+using ConfigManager.Entity;
+using Newtonsoft.Json;
 
 namespace ConfigManager
 {
@@ -31,11 +34,12 @@ namespace ConfigManager
             { "system-update", "Update the system." }
         };
 
-        private readonly Dictionary<string, string> _packages = new Dictionary<string, string>
+        public readonly List<Package> Packages;
+
+        public Terminal()
         {
-            {"apache2", "Install the Apache server."},
-            {"php", "Install the PHP runtime with a simple Hello-World application."}
-        };
+            Packages = JsonConvert.DeserializeObject<List<Package>>(File.ReadAllText("package.json"));
+        }
 
         public async Task Run(string[] args)
         {
@@ -59,7 +63,7 @@ namespace ConfigManager
                         Console.WriteLine("There are list of possible commands with descriptions.");
                         _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
                         Console.WriteLine("List of packages:");
-                        _packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
+                        Packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
                         Console.WriteLine(_commandFailed);
                         break;
                     }
