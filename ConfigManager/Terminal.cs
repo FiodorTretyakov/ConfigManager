@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
 using ConfigManager.Entity;
+using ConfigManager.Packages;
 using Newtonsoft.Json;
 
 namespace ConfigManager
@@ -23,19 +24,20 @@ namespace ConfigManager
 
         private readonly HttpClient _client = new HttpClient();
 
-        public readonly List<Command> Commands;
-        public readonly List<Package> Packages;
+        private List<Command> _commands;
+        public async Task<List<Command>> GetCommands() => _commands ?? (_commands = JsonConvert
+                       .DeserializeObject<CollectionRoot<Command>>(await File.ReadAllTextAsync("command.json"))
+                       .Elements);
 
-        public Terminal()
-        {
-            Packages = JsonConvert.DeserializeObject<CollectionRoot<Package>>(File.ReadAllText("package.json")).Elements;
-            Commands = JsonConvert.DeserializeObject<CollectionRoot<Command>>(File.ReadAllText("command.json")).Elements;
-        }
+        private List<Package> _packages;
+        public async Task<List<Package>> GetPackages() => _packages ?? (_packages = JsonConvert
+                                                              .DeserializeObject<CollectionRoot<Package>>(await File.ReadAllTextAsync("package.json"))
+                                                              .Elements);
 
         public async Task Run(string[] args)
         {
             var command = string.Empty;
-            string packageName = null;
+            string package = null;
 
             if (args.Length > 0)
             {
@@ -43,7 +45,7 @@ namespace ConfigManager
 
                 if (args.Length > 1)
                 {
-                    packageName = args[1];
+                    package = args[1];
                 }
             }
 
@@ -52,9 +54,9 @@ namespace ConfigManager
                 case "help":
                     {
                         Console.WriteLine("There are list of possible commands with descriptions.");
-                        Commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
+                        (await GetCommands()).AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
                         Console.WriteLine("List of packages:");
-                        Packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}, Dependencies: {string.Join(',', c.Dependencies ?? new List<string>())}"));
+                        (await GetPackages()).AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}, Dependencies: {string.Join(',', c.Dependencies ?? new List<string>())}"));
                         Console.WriteLine(_commandFailed);
                         break;
                     }
@@ -78,28 +80,12 @@ namespace ConfigManager
                     }
                 case "install":
                     {
-                        if (string.IsNullOrWhiteSpace(packageName))
-                        {
-                            Console.WriteLine("You missed the argument - which package to install. To see the list, please, run help command.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("It is strictly recommended to update your system before package installation. Do you wanna do it now?");
-                            if (Console.ReadLine() == "Y")
-                            {
-                                await Run(new[] { "system-update", string.Empty });
-                            }
-
-                            //Bash("sudo apt-get install apache2 apache2-doc apache2-utils", "Installing Apache...");
-                            //Bash("sudo a2dismod mpm_event", "Disabling default Ubuntu event module...");
-                            //Bash("sudo a2enmod mpm_prefork", "Enabling prefork module...");
-                            //Bash("sudo service apache2 restart", "Restarting the Apache...");
-                        }
+                        await ResolvePackage(package).Run();
                         break;
                     }
                 case "delete":
                     {
-                        if (string.IsNullOrWhiteSpace(packageName))
+                        if (string.IsNullOrWhiteSpace(package))
                         {
                             Console.WriteLine("You missed the argument - which package to delete. To see the list, please, run help command.");
                         }
@@ -107,13 +93,13 @@ namespace ConfigManager
                     }
                 case "exists":
                     {
-                        if (string.IsNullOrWhiteSpace(packageName))
+                        if (string.IsNullOrWhiteSpace(package))
                         {
                             Console.WriteLine("You missed the argument - which package check the status. To see the list, please, run help command.");
                         }
                         else
                         {
-                            Bash($"apt-cache search --names-only '^{packageName}.*'", "Searching the package...");
+                            Bash($"apt-cache search --names-only '^{package}.*'", "Searching the package...");
                         }
                         break;
                     }
@@ -132,6 +118,26 @@ namespace ConfigManager
                     {
                         Console.WriteLine($"Command not found. {_commandFailed} To see all possible commands, please, run ./ConfigManager help.");
                         break;
+                    }
+            }
+        }
+
+        public Base ResolvePackage(string packageName)
+        {
+            switch (packageName)
+            {
+                case "apache":
+                    {
+                        return new Apache2(this);
+                    }
+                case "php":
+                    {
+                        return new Php(this);
+                    }
+                default:
+                    {
+                        Console.WriteLine("You missed the argument - which package to install. To see the list, please, run help command.");
+                        return null;
                     }
             }
         }

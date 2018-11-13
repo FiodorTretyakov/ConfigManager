@@ -9,7 +9,7 @@ namespace ConfigManager.Entity
 
         public string Description { get; set; }
 
-        [JsonProperty("dep", ItemIsReference = true, NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("dep", NullValueHandling = NullValueHandling.Include)]
         public List<string> Dependencies;
     }
 }
