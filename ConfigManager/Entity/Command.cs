@@ -1,14 +1,9 @@
-﻿using Newtonsoft.Json;
-
-namespace ConfigManager.Entity
+﻿namespace ConfigManager.Entity
 {
-    public class Command
+    public class Command :IElement
     {
+        public string Name { get; set; }
 
-        [JsonProperty("name", Required = Required.Always)]
-        public string Name;
-
-        [JsonProperty("desc")]
-        public string Description;
+        public string Description { get; set; }
     }
 }

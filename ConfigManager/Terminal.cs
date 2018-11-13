@@ -38,7 +38,7 @@ namespace ConfigManager
 
         public Terminal()
         {
-            Packages = JsonConvert.DeserializeObject<List<Package>>(File.ReadAllText("package.json"));
+            Packages = JsonConvert.DeserializeObject<CollectionRoot<Package>>(File.ReadAllText("package.json")).Elements;
         }
 
         public async Task Run(string[] args)

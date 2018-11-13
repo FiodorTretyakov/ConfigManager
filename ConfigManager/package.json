@@ -1,13 +1,15 @@
-[
-  {
-    "desc": "Install the Apache server.",
-    "name": "apache2"
-  },
-  {
-    "dep": [
-      "apache2"
-    ],
-    "desc": "Install the PHP runtime with a simple Hello-World application.",
-    "name": "php"
-  }
-]
+{
+  "elements": [
+    {
+      "desc": "Install the Apache server.",
+      "name": "apache2"
+    },
+    {
+      "dep": [
+        "apache2"
+      ],
+      "desc": "Install the PHP runtime with a simple Hello-World application.",
+      "name": "php"
+    }
+  ]
+}
