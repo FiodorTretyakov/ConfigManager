@@ -23,22 +23,13 @@ namespace ConfigManager
 
         private readonly HttpClient _client = new HttpClient();
 
-        private readonly Dictionary<string, string> _commands = new Dictionary<string, string>
-        {
-            { "help", "Show the list of commands, their descriptions and syntax." },
-            { "update", "Update the software to the latest version." },
-            { "install", $"Add and configures the package. Usage {UtilName} install package-name." },
-            { "remove", $"Remove the package if it exists. Usage {UtilName} remove package-name." },
-            { "exists", $"Check if the package exists. Usage {UtilName} exists package-name." },
-            { "version", "Display the current version of the package." },
-            { "system-update", "Update the system." }
-        };
-
+        public readonly List<Command> Commands;
         public readonly List<Package> Packages;
 
         public Terminal()
         {
             Packages = JsonConvert.DeserializeObject<CollectionRoot<Package>>(File.ReadAllText("package.json")).Elements;
+            Commands = JsonConvert.DeserializeObject<CollectionRoot<Command>>(File.ReadAllText("command.json")).Elements;
         }
 
         public async Task Run(string[] args)
@@ -61,9 +52,9 @@ namespace ConfigManager
                 case "help":
                     {
                         Console.WriteLine("There are list of possible commands with descriptions.");
-                        _commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Key}: {c.Value}"));
+                        Commands.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
                         Console.WriteLine("List of packages:");
-                        Packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
+                        Packages.AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}, Dependencies: {string.Join(',', c.Dependencies ?? new List<string>())}"));
                         Console.WriteLine(_commandFailed);
                         break;
                     }

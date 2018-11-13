@@ -11,10 +11,17 @@ namespace Test
         private readonly Terminal _terminal = new Terminal();
 
         [TestMethod]
+        public void IsCommandsLoaded()
+        {
+            Assert.IsTrue(_terminal.Commands.Count > 5);
+            Assert.IsTrue(_terminal.Commands.Any(c => c.Name.Length > 0 && c.Description.Length > 0));
+        }
+
+        [TestMethod]
         public void IsPackagesLoaded()
         {
             Assert.IsTrue(_terminal.Packages.Count > 1);
-            Assert.IsTrue(_terminal.Packages.Any(p => p.Dependencies?.Count > 0));
+            Assert.IsTrue(_terminal.Packages.Any(p => p.Dependencies?.Count > 0 && p.Name.Length > 0 && p.Description.Length > 0));
         }
 
         [TestMethod]

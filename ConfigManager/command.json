@@ -1,3 +1,32 @@
 {
-  "commands":  [] 
+  "elements": [
+    {
+      "name": "help",
+      "desc": "Show the list of commands, their descriptions and syntax."
+    },
+    {
+      "name": "update",
+      "desc": "Update the software to the latest version."
+    },
+    {
+      "name": "install",
+      "desc": "Add and configures the package. Usage ConfigManager install package-name."
+    },
+    {
+      "name": "remove",
+      "desc": "Remove the package if it exists. Usage ConfigManager remove package-name"
+    },
+    {
+      "name": "exists",
+      "desc": "Check if the package exists. Usage ConfigManager exists package-name"
+    },
+    {
+      "name": "version",
+      "desc": "Display the current version of the package."
+    },
+    {
+      "name": "system-update",
+      "desc": "Update the system."
+    }
+  ]
 }
