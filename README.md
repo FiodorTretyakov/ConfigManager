@@ -1,8 +1,6 @@
 # ConfigManager
 Simple Chef implementation.
 
-Your tool must provide an abstraction that allows specifying a file's content and metadata (owner, group, mode)
-
 documentation - 
 install
 add 2 files

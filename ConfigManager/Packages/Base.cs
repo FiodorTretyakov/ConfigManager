@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ConfigManager.Entity;
+using Mono.Unix;
 
 namespace ConfigManager.Packages
 {
@@ -10,7 +12,7 @@ namespace ConfigManager.Packages
     {
         protected readonly Terminal Terminal;
 
-        protected abstract string Name { get;  }
+        protected abstract string Name { get; }
 
         protected Base(Terminal t)
         {
@@ -44,6 +46,21 @@ namespace ConfigManager.Packages
             dependencies.Add(package);
 
             return dependencies;
+        }
+
+        public async Task CreateNewFile(string path, string localFileName, FileAccessPermissions permissions)
+        {
+            using (var content = File.OpenRead(localFileName))
+            {
+                var file = new UnixFileInfo(path) { FileAccessPermissions = permissions };
+
+                using (var w = file.OpenWrite())
+                {
+                    content.Position = 0;
+                    await content.CopyToAsync(w);
+                    w.Position = 0;
+                }
+            }
         }
     }
 }
