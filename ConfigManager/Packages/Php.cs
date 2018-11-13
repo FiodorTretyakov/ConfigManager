@@ -2,7 +2,7 @@
 
 namespace ConfigManager.Packages
 {
-    public class Php : Base
+    public sealed class Php : Base
     {
         protected override string Name => "php";
 

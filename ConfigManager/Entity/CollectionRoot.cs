@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace ConfigManager.Entity
 {
-    public class CollectionRoot<T> where T: IElement
+    public class CollectionRoot<T> where T : IElement
     {
-        [JsonProperty("elements")]
+        [JsonProperty("elements", Required = Required.Always)]
         public List<T> Elements;
     }
 }

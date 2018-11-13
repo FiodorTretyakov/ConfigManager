@@ -56,7 +56,7 @@ namespace ConfigManager
                         Console.WriteLine("There are list of possible commands with descriptions.");
                         (await GetCommands()).AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}"));
                         Console.WriteLine("List of packages:");
-                        (await GetPackages()).AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}, Dependencies: {string.Join(',', c.Dependencies ?? new List<string>())}"));
+                        (await GetPackages()).AsParallel().ForAll(c => Console.WriteLine($"{c.Name}: {c.Description}, Dependencies: {string.Join(',', c.Dependencies)}"));
                         Console.WriteLine(_commandFailed);
                         break;
                     }

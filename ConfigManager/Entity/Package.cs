@@ -10,6 +10,8 @@ namespace ConfigManager.Entity
         public string Description { get; set; }
 
         [JsonProperty("dep", NullValueHandling = NullValueHandling.Include)]
-        public List<string> Dependencies;
+        private List<string> _dependencies;
+
+        public List<string> Dependencies => _dependencies ?? new List<string>();
     }
 }

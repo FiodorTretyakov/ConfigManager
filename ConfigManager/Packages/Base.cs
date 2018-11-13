@@ -28,7 +28,7 @@ namespace ConfigManager.Packages
             (await ResolveDependencies(Name, new List<Package>())).ForEach(async p => await Terminal.ResolvePackage(p.Name).Run(true));
         }
 
-        private async Task<List<Package>> ResolveDependencies(string packageName, List<Package> dependencies)
+        public async Task<List<Package>> ResolveDependencies(string packageName, List<Package> dependencies)
         {
             var package = (await Terminal.GetPackages()).First(p => p.Name == packageName);
 

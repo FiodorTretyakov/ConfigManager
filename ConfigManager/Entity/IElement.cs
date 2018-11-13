@@ -8,7 +8,7 @@ namespace ConfigManager.Entity
         [JsonProperty("name", Required = Required.Always)]
         string Name { get; set; }
 
-        [JsonProperty("desc")]
+        [JsonProperty("desc", NullValueHandling = NullValueHandling.Include)]
         string Description { get; set; }
 }
 }
