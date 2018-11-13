@@ -154,7 +154,7 @@ namespace ConfigManager
         {
             var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
 
-            return new Version($"{node.SelectSingleNode("VersionPrefix").InnerText}.{node.SelectSingleNode("VersionSuffix").InnerText}");
+            return new Version($"{doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup").SelectSingleNode("VersionPrefix").InnerText}");
         }
 
         public async Task<Version> GetLatestVersion()

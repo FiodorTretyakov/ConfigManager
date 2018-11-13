@@ -3,10 +3,8 @@ $runtime = "ubuntu.14.04-x64"
 $projectName = "ConfigManager"
 $projectFile = "$projectName\$projectName.csproj"
 [xml]$xml = Get-Content $projectFile
-[int]$suffix = $xml.Project.PropertyGroup.VersionSuffix
-$prefix = $xml.Project.PropertyGroup.VersionPrefix
-$suffix += 1
-$xml.Project.PropertyGroup.VersionSuffix = [string]$suffix
+$version = [version]$xml.Project.PropertyGroup.VersionPrefix
+$xml.Project.PropertyGroup.VersionPrefix = [string](New-Object -TypeName System.Version -ArgumentList $version.Major,$version.Minor,$version.Build, ($version.Revision + 1))
 $xml.Save("$projectFile")
 
 Set-Location "Test"
