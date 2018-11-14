@@ -28,5 +28,14 @@ namespace ConfigManager.Packages
                                                | FileAccessPermissions.OtherWrite);
             Terminal.Bash("sudo service apache2 restart", "Restarting the apache...");
         }
+
+        public override async Task<bool> Delete()
+        {
+            if (!await base.Delete()) return false;
+            Terminal.Bash("sudo apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr \"\n\" \" \"`", "Deleting Php...");
+
+            return true;
+
+        }
     }
 }

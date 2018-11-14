@@ -93,10 +93,13 @@ namespace ConfigManager
                     }
                 case "delete":
                     {
-                        if (string.IsNullOrWhiteSpace(packageName))
+                        var package = ResolvePackage(packageName);
+
+                        if (package != null)
                         {
-                            Console.WriteLine("You missed the argument - which package to delete. To see the list, please, run help command.");
+                            await package.Delete();
                         }
+
                         break;
                     }
                 case "exists":
@@ -146,7 +149,7 @@ namespace ConfigManager
                     }
                 default:
                     {
-                        Console.WriteLine("You missed the argument - which package to install. To see the list, please, run help command.");
+                        Console.WriteLine("You missed the argument - the package name. To see the list, please, run help command.");
                         return null;
                     }
             }

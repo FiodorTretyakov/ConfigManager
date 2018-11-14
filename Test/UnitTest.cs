@@ -54,16 +54,10 @@ namespace Test
         }
 
         [TestMethod]
-        public async Task VersionIsLatest()
-        {
-            Assert.IsTrue(_terminal.GetCurrentVersion() >= await _terminal.GetLatestVersion());
-        }
+        public async Task VersionIsLatest() => Assert.IsTrue(_terminal.GetCurrentVersion() >= await _terminal.GetLatestVersion());
 
         [TestMethod]
-        public async Task TerminalRuns()
-        {
-            Assert.IsTrue(await _terminal.Run(new[] { string.Empty }));
-        }
+        public async Task TerminalRuns() => Assert.IsTrue(await _terminal.Run(new[] { string.Empty }));
 
         [TestMethod]
         public async Task TerminalRunsBash()
@@ -81,38 +75,34 @@ namespace Test
         }
 
         [TestMethod]
-        public void NoPackageExists()
-        {
-            Assert.IsNull(_terminal.ResolvePackage("fake"));
-        }
+        public void NoPackageExists() => Assert.IsNull(_terminal.ResolvePackage("fake"));
 
         [TestMethod]
-        public void ApacheExists()
-        {
-            Assert.IsInstanceOfType(_terminal.ResolvePackage("apache2"), typeof(Apache2));
-        }
+        public void ApacheExists() => Assert.IsInstanceOfType(_terminal.ResolvePackage("apache2"), typeof(Apache2));
 
         [TestMethod]
         public async Task ResolveDependencies()
         {
             const string packageName = "php";
-            var package = _terminal.ResolvePackage(packageName);
 
-            var dependencies = await package.ResolveDependencies(packageName, new List<Package>());
+            var dependencies = await _terminal.ResolvePackage(packageName).ResolveDependencies(packageName, new List<Package>());
             Assert.IsTrue(dependencies.Count > 0);
             Assert.AreEqual(dependencies[0].Name, "apache2");
         }
 
         [TestMethod]
+        public async Task GetDependentForApache() => Assert.AreEqual((await _terminal.ResolvePackage("apache2").GetDependent()).Count, 1);
+
+        [TestMethod]
+        public async Task GetDependentForPhp() => Assert.AreEqual((await _terminal.ResolvePackage("php").GetDependent()).Count, 0);
+
+        [TestMethod]
         public async Task IsFileCreated()
         {
-            const string packageName = "php";
             const string testFile = "test.txt";
             const string phpFile = @"Content/php.txt";
 
-            var package = _terminal.ResolvePackage(packageName);
-
-            await package.CreateNewFile(testFile, phpFile);
+            await _terminal.ResolvePackage("php").CreateNewFile(testFile, phpFile);
             Assert.IsTrue(File.Exists(testFile));
             Assert.AreEqual(await File.ReadAllTextAsync(testFile), await File.ReadAllTextAsync(phpFile));
         }
