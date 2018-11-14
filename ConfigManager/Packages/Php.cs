@@ -20,7 +20,7 @@ namespace ConfigManager.Packages
             }
             Terminal.Bash("sudo apt-get install php5 libapache2-mod-php5 -y", "Installing php...");
             Terminal.Bash("sudo rm -rf /var/www/html/*", "Cleaning the directory...");
-            await CreateNewFile(Path.Combine("var", "www", "html", "index.php"), @"Content/php.txt",
+            await CreateNewFile("/var/www/html/index.php", @"Content/php.txt",
                 FileAccessPermissions.UserRead | FileAccessPermissions.UserWrite
                                                | FileAccessPermissions.GroupRead
                                                | FileAccessPermissions.OtherRead
