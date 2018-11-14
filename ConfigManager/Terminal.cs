@@ -159,8 +159,6 @@ namespace ConfigManager
 
         private static Version GetVersion(XmlNode doc)
         {
-            var node = doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup");
-
             return new Version($"{doc.SelectSingleNode("Project").SelectSingleNode("PropertyGroup").SelectSingleNode("Version").InnerText}");
         }
 
