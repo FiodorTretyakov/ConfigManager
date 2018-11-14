@@ -10,6 +10,12 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <LangVersion>latest</LangVersion>
     <Version>0.0.1.19</Version>
+    <RepositoryUrl>https://github.com/FiodorTretyakov/ConfigManager</RepositoryUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/FiodorTretyakov/ConfigManager/projects/1</PackageProjectUrl>
+    <RepositoryType>github</RepositoryType>
+    <Copyright>Fiodor Tretyakov 2018</Copyright>
+    <Description>.NET Core solution to manage linux packages.</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
