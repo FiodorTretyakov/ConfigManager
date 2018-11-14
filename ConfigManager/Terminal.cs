@@ -34,7 +34,7 @@ namespace ConfigManager
                                                               .DeserializeObject<CollectionRoot<Package>>(await File.ReadAllTextAsync("package.json"))
                                                               .Elements);
 
-        public async Task Run(string[] args)
+        public async Task<bool> Run(string[] args)
         {
             var command = string.Empty;
             string packageName = null;
@@ -127,6 +127,8 @@ namespace ConfigManager
                         break;
                     }
             }
+
+            return true;
         }
 
         public Base ResolvePackage(string packageName)

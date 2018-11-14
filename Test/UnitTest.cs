@@ -46,14 +46,24 @@ namespace Test
         }
 
         [TestMethod]
-        public async Task ResolveDependencies()
+        public async Task TerminalRuns()
         {
-            const string packageName = "php";
-            var package = _terminal.ResolvePackage(packageName);
+            Assert.IsTrue(await _terminal.Run(new[] { string.Empty }));
+        }
 
-            var dependencies = await package.ResolveDependencies(packageName, new List<Package>());
-            Assert.IsTrue(dependencies.Count > 0);
-            Assert.AreEqual(dependencies[0].Name, "apache2");
+        [TestMethod]
+        public async Task TerminalRunsBash()
+        {
+            const string packageName = "fake";
+
+            Assert.IsTrue(await _terminal.Run(new[] { "help" }));
+            Assert.IsTrue(await _terminal.Run(new[] { "update" }));
+            Assert.IsTrue(await _terminal.Run(new[] { "install" }));
+            Assert.IsTrue(await _terminal.Run(new[] { "install", packageName }));
+            Assert.IsTrue(await _terminal.Run(new[] { "delete" }));
+            Assert.IsTrue(await _terminal.Run(new[] { "delete", packageName }));
+            Assert.IsTrue(await _terminal.Run(new[] { "exists" }));
+            Assert.IsTrue(await _terminal.Run(new[] { "version" }));
         }
 
         [TestMethod]
@@ -66,6 +76,17 @@ namespace Test
         public void ApacheExists()
         {
             Assert.IsInstanceOfType(_terminal.ResolvePackage("apache2"), typeof(Apache2));
+        }
+
+        [TestMethod]
+        public async Task ResolveDependencies()
+        {
+            const string packageName = "php";
+            var package = _terminal.ResolvePackage(packageName);
+
+            var dependencies = await package.ResolveDependencies(packageName, new List<Package>());
+            Assert.IsTrue(dependencies.Count > 0);
+            Assert.AreEqual(dependencies[0].Name, "apache2");
         }
 
         [TestMethod]
