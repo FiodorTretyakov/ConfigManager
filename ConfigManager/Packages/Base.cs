@@ -60,6 +60,8 @@ namespace ConfigManager.Packages
                     await content.CopyToAsync(w);
                     w.Position = 0;
                 }
+
+                var unixFileInfo = new UnixFileInfo(path) {FileAccessPermissions = permissions};
             }
         }
     }
