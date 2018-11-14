@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ConfigManager;
 using ConfigManager.Entity;
 using ConfigManager.Packages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
@@ -13,6 +15,12 @@ namespace Test
     public class UnitTest
     {
         private readonly Terminal _terminal = new Terminal();
+        private readonly IConfigurationRoot _config;
+
+        public UnitTest()
+        {
+            _config = new ConfigurationBuilder().AddUserSecrets("3b2df58a-e5e4-4d46-94b1-85286f027cbc").Build();
+        }
 
         [TestMethod]
         public async Task IsCommandsLoaded()
@@ -27,7 +35,8 @@ namespace Test
         {
             var packages = await _terminal.GetPackages();
             Assert.IsTrue(packages.Count > 1);
-            Assert.IsTrue(packages.Any(p => p.Dependencies?.Count > 0 && p.Name.Length > 0 && p.Description.Length > 0));
+            Assert.IsTrue(packages.Any(p =>
+                p.Dependencies?.Count > 0 && p.Name.Length > 0 && p.Description.Length > 0));
         }
 
         [TestMethod]
@@ -101,6 +110,23 @@ namespace Test
             await package.CreateNewFile(testFile, phpFile);
             Assert.IsTrue(File.Exists(testFile));
             Assert.AreEqual(await File.ReadAllTextAsync(testFile), await File.ReadAllTextAsync(phpFile));
+        }
+
+        [TestMethod]
+        public async Task TestResultServers()
+        {
+            await TestServerFor200(_config.GetSection("server1").Value);
+            await TestServerFor200(_config.GetSection("server2").Value);
+        }
+
+        public async Task TestServerFor200(string server)
+        {
+            using (var response = await _terminal.Client.GetAsync(server))
+            {
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+                Assert.AreEqual("Hello, world!\n", await response.Content.ReadAsStringAsync());
+            }
+
         }
     }
 }

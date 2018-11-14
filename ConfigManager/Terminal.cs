@@ -22,17 +22,18 @@ namespace ConfigManager
         private readonly string _commandFailed =
             $"Please, run the command in format: ./{UtilName} command-name arguments.";
 
-        private readonly HttpClient _client = new HttpClient();
-
         private List<Command> _commands;
+        private List<Package> _packages;
+
         public async Task<List<Command>> GetCommands() => _commands ?? (_commands = JsonConvert
                        .DeserializeObject<CollectionRoot<Command>>(await File.ReadAllTextAsync("command.json"))
                        .Elements);
 
-        private List<Package> _packages;
         public async Task<List<Package>> GetPackages() => _packages ?? (_packages = JsonConvert
                                                               .DeserializeObject<CollectionRoot<Package>>(await File.ReadAllTextAsync("package.json"))
                                                               .Elements);
+
+        public readonly HttpClient Client = new HttpClient();
 
         public async Task<bool> Run(string[] args)
         {
@@ -166,7 +167,7 @@ namespace ConfigManager
 
         public async Task<Version> GetLatestVersion()
         {
-            using (var response = await _client.GetAsync($"{BaseUrl}/ConfigManager/ConfigManager.csproj"))
+            using (var response = await Client.GetAsync($"{BaseUrl}/ConfigManager/ConfigManager.csproj"))
             {
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 {
