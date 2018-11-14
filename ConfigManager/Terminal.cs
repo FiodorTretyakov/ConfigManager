@@ -37,7 +37,7 @@ namespace ConfigManager
         public async Task Run(string[] args)
         {
             var command = string.Empty;
-            string package = null;
+            string packageName = null;
 
             if (args.Length > 0)
             {
@@ -45,7 +45,7 @@ namespace ConfigManager
 
                 if (args.Length > 1)
                 {
-                    package = args[1];
+                    packageName = args[1];
                 }
             }
 
@@ -80,12 +80,18 @@ namespace ConfigManager
                     }
                 case "install":
                     {
-                        await ResolvePackage(package).Run();
+                        var package = ResolvePackage(packageName);
+
+                        if (package != null)
+                        {
+                            await package.Run();
+                        }
+
                         break;
                     }
                 case "delete":
                     {
-                        if (string.IsNullOrWhiteSpace(package))
+                        if (string.IsNullOrWhiteSpace(packageName))
                         {
                             Console.WriteLine("You missed the argument - which package to delete. To see the list, please, run help command.");
                         }
@@ -93,13 +99,13 @@ namespace ConfigManager
                     }
                 case "exists":
                     {
-                        if (string.IsNullOrWhiteSpace(package))
+                        if (string.IsNullOrWhiteSpace(packageName))
                         {
                             Console.WriteLine("You missed the argument - which package check the status. To see the list, please, run help command.");
                         }
                         else
                         {
-                            Bash($"apt-cache search --names-only '^{package}.*'", "Searching the package...");
+                            Bash($"apt-cache search --names-only '^{packageName}.*'", "Searching the package...");
                         }
                         break;
                     }
