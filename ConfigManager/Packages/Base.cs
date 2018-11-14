@@ -21,13 +21,15 @@ namespace ConfigManager.Packages
 
         public virtual async Task Run(bool noDep = false)
         {
-            Console.WriteLine("It is strictly recommended to update your system before package installation. Do you wanna do it now? Y/n");
+            Console.WriteLine(
+                "It is strictly recommended to update your system before package installation. Do you wanna do it now? Y/n");
             if (Console.ReadLine() == "Y")
             {
-                await Terminal.Run(new[] { "system-update", string.Empty });
+                await Terminal.Run(new[] {"system-update", string.Empty});
             }
 
-            (await ResolveDependencies(Name, new List<Package>())).ForEach(async p => await Terminal.ResolvePackage(p.Name).Run(true));
+            (await ResolveDependencies(Name, new List<Package>())).ForEach(async p =>
+                await Terminal.ResolvePackage(p.Name).Run(true));
         }
 
         public async Task<List<Package>> ResolveDependencies(string packageName, List<Package> dependencies)
@@ -40,6 +42,7 @@ namespace ConfigManager.Packages
                 {
                     continue;
                 }
+
                 dependencies.AddRange(await ResolveDependencies(dep, dependencies));
             }
 
@@ -48,7 +51,7 @@ namespace ConfigManager.Packages
             return dependencies;
         }
 
-        public async Task CreateNewFile(string path, string localFileName, FileAccessPermissions permissions)
+        public async Task CreateNewFile(string path, string localFileName)
         {
             using (var content = File.OpenRead(localFileName))
             {
@@ -60,9 +63,13 @@ namespace ConfigManager.Packages
                     await content.CopyToAsync(w);
                     w.Position = 0;
                 }
-
-                var unixFileInfo = new UnixFileInfo(path) {FileAccessPermissions = permissions};
             }
+        }
+
+        public async Task CreateNewFile(string path, string localFileName, FileAccessPermissions permissions)
+        {
+            await CreateNewFile(path, localFileName);
+            var unixFileInfo = new UnixFileInfo(path) {FileAccessPermissions = permissions};
         }
     }
 }

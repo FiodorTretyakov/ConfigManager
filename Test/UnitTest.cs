@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ConfigManager;
 using ConfigManager.Entity;
+using ConfigManager.Packages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
@@ -52,6 +54,32 @@ namespace Test
             var dependencies = await package.ResolveDependencies(packageName, new List<Package>());
             Assert.IsTrue(dependencies.Count > 0);
             Assert.AreEqual(dependencies[0].Name, "apache2");
+        }
+
+        [TestMethod]
+        public void NoPackageExists()
+        {
+            Assert.IsNull(_terminal.ResolvePackage("fake"));
+        }
+
+        [TestMethod]
+        public void ApacheExists()
+        {
+            Assert.IsInstanceOfType(_terminal.ResolvePackage("apache2"), typeof(Apache2));
+        }
+
+        [TestMethod]
+        public async Task IsFileCreated()
+        {
+            const string packageName = "php";
+            const string testFile = "test.txt";
+            const string phpFile = @"Content/php.txt";
+
+            var package = _terminal.ResolvePackage(packageName);
+
+            await package.CreateNewFile(testFile, phpFile);
+            Assert.IsTrue(File.Exists(testFile));
+            Assert.AreEqual(await File.ReadAllTextAsync(testFile), await File.ReadAllTextAsync(phpFile));
         }
     }
 }
