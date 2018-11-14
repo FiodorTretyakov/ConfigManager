@@ -12,11 +12,11 @@ namespace ConfigManager.Packages
         {
         }
 
-        public override async Task Run(bool noDep = false)
+        public override async Task Install(bool noDep = false)
         {
             if (!noDep)
             {
-                await base.Run();
+                await base.Install();
             }
             Terminal.Bash("sudo apt-get install php5 libapache2-mod-php5 -y", "Installing php...");
             Terminal.Bash("sudo rm -rf /var/www/html/*", "Cleaning the directory...");

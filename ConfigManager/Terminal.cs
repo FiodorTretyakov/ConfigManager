@@ -86,7 +86,7 @@ namespace ConfigManager
 
                         if (package != null)
                         {
-                            await package.Run();
+                            await package.Install();
                         }
 
                         break;

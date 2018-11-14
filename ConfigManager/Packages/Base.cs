@@ -19,7 +19,7 @@ namespace ConfigManager.Packages
             Terminal = t;
         }
 
-        public virtual async Task Run(bool noDep = false)
+        public virtual async Task Install(bool noDep = false)
         {
             Console.WriteLine(
                 "It is strictly recommended to update your system before package installation. Do you wanna do it now? Y/n");
@@ -29,7 +29,7 @@ namespace ConfigManager.Packages
             }
 
             (await ResolveDependencies(Name, new List<Package>())).ForEach(async p =>
-                await Terminal.ResolvePackage(p.Name).Run(true));
+                await Terminal.ResolvePackage(p.Name).Install(true));
         }
 
         public async Task<List<Package>> ResolveDependencies(string packageName, List<Package> dependencies)
