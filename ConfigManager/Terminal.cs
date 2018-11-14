@@ -78,6 +78,7 @@ namespace ConfigManager
 
                         break;
                     }
+
                 case "install":
                     {
                         var package = ResolvePackage(packageName);
@@ -132,7 +133,7 @@ namespace ConfigManager
         {
             switch (packageName)
             {
-                case "apache":
+                case "apache2":
                     {
                         return new Apache2(this);
                     }
