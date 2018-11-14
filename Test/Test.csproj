@@ -6,7 +6,7 @@
     <IsPackable>false</IsPackable>
     <Platforms>AnyCPU;x64</Platforms>
     <LangVersion>latest</LangVersion>
-     <UserSecretsId>3b2df58a-e5e4-4d46-94b1-85286f027cbc</UserSecretsId>
+    <UserSecretsId>3b2df58a-e5e4-4d46-94b1-85286f027cbc</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +15,9 @@
 
   <ItemGroup>
     <None Include="..\ConfigManager\ConfigManager.csproj" Link="ConfigManager.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Test.csproj" Link="Test.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

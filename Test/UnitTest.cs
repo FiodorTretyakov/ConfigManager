@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using System.Xml;
 using ConfigManager;
 using ConfigManager.Entity;
 using ConfigManager.Packages;
@@ -19,7 +20,11 @@ namespace Test
 
         public UnitTest()
         {
-            _config = new ConfigurationBuilder().AddUserSecrets("3b2df58a-e5e4-4d46-94b1-85286f027cbc").Build();
+            var doc = new XmlDocument();
+            doc.Load("Test.csproj");
+
+            _config = new ConfigurationBuilder().AddUserSecrets(doc.SelectSingleNode("Project")
+                .SelectSingleNode("PropertyGroup").SelectSingleNode("UserSecretsId").InnerText).Build();
         }
 
         [TestMethod]
