@@ -52,7 +52,7 @@ namespace ConfigManager.Packages
         {
             using (var content = File.OpenRead(localFileName))
             {
-                var file = new UnixFileInfo(path) { FileAccessPermissions = permissions };
+                var file = new UnixFileInfo(path);
 
                 using (var w = file.OpenWrite())
                 {
