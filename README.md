@@ -1,7 +1,7 @@
 # ConfigManager
 Analogues: Chef, Puppet.
 
-### The ConfigManager allows to add/remove and configure packages for linux.
+The ConfigManager allows to add/remove and configure packages for linux.
 
 ## Now it supports commands:
 * help: shows all functionality for the ConfigManger;
