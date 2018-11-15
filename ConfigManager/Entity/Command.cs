@@ -1,6 +1,6 @@
 ﻿namespace ConfigManager.Entity
 {
-    public class Command :IElement
+    public class Command : IElement
     {
         public string Name { get; set; }
 
