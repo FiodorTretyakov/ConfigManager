@@ -16,16 +16,6 @@ namespace Test
     public class UnitTest
     {
         private readonly Terminal _terminal = new Terminal();
-        private readonly IConfigurationRoot _config;
-
-        public UnitTest()
-        {
-            var doc = new XmlDocument();
-            doc.Load("Test.csproj");
-
-            _config = new ConfigurationBuilder().AddUserSecrets(doc.SelectSingleNode("Project")
-                .SelectSingleNode("PropertyGroup").SelectSingleNode("UserSecretsId").InnerText).Build();
-        }
 
         [TestMethod]
         public async Task IsCommandsLoaded()
@@ -110,8 +100,14 @@ namespace Test
         [TestMethod]
         public async Task TestResultServers()
         {
-            await TestServerFor200(_config.GetSection("server1").Value);
-            await TestServerFor200(_config.GetSection("server2").Value);
+            var doc = new XmlDocument();
+            doc.Load("Test.csproj");
+
+            var config = new ConfigurationBuilder().AddUserSecrets(doc.SelectSingleNode("Project")
+                .SelectSingleNode("PropertyGroup").SelectSingleNode("UserSecretsId").InnerText).Build();
+
+            await TestServerFor200(config.GetSection("server1").Value);
+            await TestServerFor200(config.GetSection("server2").Value);
         }
 
         public async Task TestServerFor200(string server)
