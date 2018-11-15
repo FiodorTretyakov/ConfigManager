@@ -1,7 +1,7 @@
 # ConfigManager
 Analogues: Chef, Puppet.
 
-###### The ConfigManager allows to add/remove and configure packages for linux.
+### The ConfigManager allows to add/remove and configure packages for linux.
 
 ## Now it supports commands:
 * help: shows all functionality for the ConfigManger;
@@ -29,7 +29,7 @@ The solution can be installed to the machine without any dependencies of .NET Co
 
 ## Extension
 
-###### Commands
+### Commands
 All commands store in ConfigManager/command.json file.
 It has a root array "elements", which consists of commands represented that way:
 
@@ -45,7 +45,7 @@ Command implementation is the list of actions, they can include:
 * Console Input: Y/n;
 * Some internal actions;
 
-###### Packages
+### Packages
 All packages store in ConfigManager/package.json file.
 It has a root array "elements", which consists of packages represented that way:
 
@@ -54,7 +54,7 @@ It has a root array "elements", which consists of packages represented that way:
       "desc": "description",
       "dep": ["dependency1", "dependency2"]
     }`
-    
+
 Dep is optional element, if your packages has no dependencies, you can omit it.
 
 You can add a new package here. Then you should add it and its to method `Terminal.ResolvePackage` that connects class and package name.
