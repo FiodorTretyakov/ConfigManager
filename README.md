@@ -1,4 +1,6 @@
 # ConfigManager
+Moved to gitlab: https://gitlab.com/fiodor.tretyakov/ConfigManager
+
 Analogues: Chef, Puppet.
 
 The ConfigManager allows to add/remove and configure packages for linux.
